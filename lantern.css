@@ -1,0 +1,24 @@
+body{
+	height:100%;
+	width: 100%;
+	margin:0;
+}
+div{
+	text-align:center;
+	width: 100%;
+	height:100%;
+	position:fixed;
+	display:block;
+}
+#instructions{
+	background:#000;
+	color:#fff;
+}
+#instructions p{
+	position:absolute;
+	width:100%;
+	top:50%;
+	margin-top:-6pt;
+	font-family:Feura Sans Light,Tahoma;
+	font-size:3em;
+}

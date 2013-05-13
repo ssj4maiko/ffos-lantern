@@ -1,0 +1,34 @@
+{
+  "name": "Vanilla Lantern",
+  "description" : "Use your smartphone as a lantern",
+  "package_path": "http://localhost/_ffos/lantern/application.zip",
+  "launch_path": "index.html",
+  "version": "0.0",
+  "size": 172496,
+  "release_notes": "0.0",
+  "developer": {
+    "name": "Maiko Gabriel Kinzel Engelke",
+    "url": "http://maikoengelke.com/"
+  },
+  "locales": {
+    "pt_BR": {
+      "description": "Use seu celular como lanterna."
+    },
+    "en_US": {
+      "description": "Use your smartphone as a lantern"
+    }
+  },
+  "icons": {
+    "16": "/icons/16.png",
+    "64": "/icons/64.png",
+    "128": "/icons/128.png"
+  },
+  "permissions": {
+    "settings": {
+      "description": "Required to chenge the value of the screen brightness to its maximum and change it back to.",
+      "access": "readwrite"
+    }
+  },
+  "installs_allowed_from": ["*"],
+  "type": "certified"
+}
