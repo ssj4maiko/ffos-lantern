@@ -1,7 +1,7 @@
-ffos-lantern
+Vanilla Lantern
 ============
 
-Firefox OS - Lantern
+Firefox OS - Lantern App
 
 A simple app with a white screen (and some instructions in a black background).
 My insterest was in trying priviledged and certifies APIs, in this case, forcing full brightness and changing it back.
