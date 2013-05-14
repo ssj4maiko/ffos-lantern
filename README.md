@@ -11,4 +11,4 @@ Because certified apps are really dangerous (As you can see in the comments of t
 
 
 
-Current status: Works in the Simulator, not working on the Phone. Need to find something to debug...
+Current status: Working, but with fixed options because a certain feature is not yet implemented.

@@ -1,5 +1,4 @@
 var lantern = {
-	pressed : false,
 	sets : null,
 	defSets : {
 		auto : null,
@@ -12,39 +11,53 @@ var lantern = {
 		lantern.div[0].addEventListener('click',lantern.off)
 		lantern.div[1].addEventListener('click',lantern.on);
 		lantern.sets = window.navigator.mozSettings;
-
-	},
-	on : function(){
-		if(lantern.defSets.auto == null){
-			var req = lantern.sets.createLock().get(['screen.automatic-brightness','screen.brightness']);
-			req.onsuccess = function(){
-				lantern.defSets.auto = req.result['screen.automatic-brightness'];
-				lantern.defSets.value = req.result['screen.brightness'];
+		if(lantern.sets){
+			if(lantern.defSets.auto == null){
+				// Array search not implemented
+				var req = lantern.sets.createLock().get(['screen.automatic-brightness','screen.brightness']);
+				req.onsuccess = function(){
+					// Because it won't work, I have to make fixed options.
+					if(req.result['screen.automatic-brightness'] != undefined){
+						lantern.defSets.auto = req.result['screen.automatic-brightness'];
+						lantern.defSets.value = req.result['screen.brightness'];
+					}
+					else {
+						lantern.defSets.auto = true;
+						lantern.defSets.value = 1.0	
+					}
+				}
 			}
 		}
-		var req = lantern.sets.createLock().set({
-			'screen.automatic-brightness': false,
-			'screen.brightness':1.0
-		});
-		req.onsuccess = function(){
-			alert('Brightness was altered.'+"\n\n"+lantern.defSets.auto+"\n"+lantern.defSets.value);
+	},
+	on : function(){
+		if(lantern.sets){
+			var req = lantern.sets.createLock().set({
+				'screen.automatic-brightness': false,
+				'screen.brightness':1.0
+			});
+			req.onsuccess = function(){
+				//alert('Brightness was altered.'+"\n\n"+lantern.defSets.auto+"\n"+lantern.defSets.value);
+			}
 		}
-
 		lantern.div[1].style.display = 'none';
-		//lantern.pressed = true;
 	},
 	off : function(){
-		var req = lantern.sets.createLock().set({
-			'screen.automatic-brightness': lantern.defSets.auto,
-			'screen.brightness': lantern.defSets.value
-		});
-		req.onsuccess = function(){
-			alert('Brightness turned back to normal');
+		
+		if(lantern.sets){
+			var req = lantern.sets.createLock().set({
+				'screen.automatic-brightness': lantern.defSets.auto,
+				'screen.brightness': lantern.defSets.value
+			});
+			req.onsuccess = function(){
+				//alert('Brightness turned back to normal');
+			}
 		}
+		
 		lantern.div[1].style.display = 'block';
 	},
 	debug : function(el,idx,arr){
-		lantern.div[0].innerHTML += 'req.result['+idx+'] = '+el+'<br />';
+		alert(idx);
+		lantern.div[0].innerHTML += '<span color="#000">req.result['+idx+'] = '+el+'</span><br />';
 	}
 }
 
